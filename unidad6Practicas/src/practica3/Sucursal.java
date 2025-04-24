@@ -71,6 +71,11 @@ public class Sucursal
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Sucursal{" + "nombre=" + nombre + ", direccion=" + direccion + ", encargado=" + encargado + '}';
+    }
     
     
     
