@@ -11,7 +11,7 @@ public class Lectura
     {
         FileReader fr = null;
         try {
-            fr = new FileReader("c:/ficheros/datos.txt");
+            fr = new FileReader("D:/ficheros/datos.txt");
             BufferedReader entrada = new BufferedReader(fr);
             String cadena = entrada.readLine();    //se lee la primera línea del fichero
             while (cadena != null) 

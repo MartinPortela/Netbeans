@@ -16,7 +16,7 @@ public class Escritura
         String cadena;
         try 
         {
-            fw = new FileWriter("c:/ficheros/salida.txt");
+            fw = new FileWriter("D:/ficheros/salida.txt");
             PrintWriter salida = new PrintWriter(fw);
             
             System.out.println("Introduce texto. Para acabar introduce la cadena FIN:");
