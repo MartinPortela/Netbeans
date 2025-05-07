@@ -3,8 +3,8 @@ package practica3;
 
 public class Paquete 
 {
+    private static int idSig=1000;
     private int id;
-    private int idcont=1000;
     private int gramos;
     private int precio;
     private boolean certificado;
@@ -12,8 +12,8 @@ public class Paquete
     public Paquete(int gramos, boolean certificado) {
         this.gramos = gramos;
         this.certificado = certificado;
-        id=idcont;
-        idcont++;
+        this.id=idSig;
+        idSig++;
     }
 
     public void setPrecio(int precio) {
@@ -26,7 +26,7 @@ public class Paquete
 
     @Override
     public String toString() {
-        return "Paquete{" + "id=" + id + ", idcont=" + idcont + ", gramos=" + gramos + ", precio=" + precio + ", certificado=" + certificado + '}';
+        return "Paquete{" + "id=" + id + ", gramos=" + gramos + ", precio=" + precio + ", certificado=" + certificado + '}';
     }
     
     

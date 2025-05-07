@@ -21,7 +21,9 @@ public class Agencia
          sucursalB.setDireccion(sc.nextLine());
          
         generarPaquetes();
+        System.out.println(sucursalA.toString());
         sucursalA.imprimirPaquetes();
+        System.out.println(sucursalB.toString());
         sucursalB.imprimirPaquetes();
         
     }
