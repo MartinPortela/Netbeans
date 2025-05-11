@@ -8,34 +8,37 @@ package informacionBD;
         {
             // Cargar el driver de Oracle
             Class.forName("oracle.jdbc.OracleDriver");
-            // Para NetBeans 8.0 también se puede usar:
-            // Class.forName("oracle.jdbc.driver.OracleDriver");
+
             // Establecer la conexión con la base de datos
-             Connection conexion = DriverManager.getConnection( 
-                     "jdbc:oracle:thin:@localhost:1521:XE", "MARTIN", "martin"
+            Connection conexion = DriverManager.getConnection(
+                "jdbc:Oracle:thin:@localhost:1521:XE", "MARTIN", "martin"
             );
-            // Crear la sentencia SQL
-            Statement sentencia = conexion.createStatement();
-            // Ejecutar la consulta y obtener el resultado, aquí podrás poner la consulta que desees
-            ResultSet resul = sentencia.executeQuery("SELECT AVG(ABS(TRUNC(MONTHS_BETWEEN(SYSDATE,FECIN)/12))) FROM temple WHERE numde>= ?");
-            // Recorrer el resultado y mostrar cada fila
-            while (resul.next()) 
+
+            // Recuperar parámetros pasados al programa
+            String anno = args[0];
+
+            // Construir sentencia SELECT con parámetros
+            String sql = "SELECT AVG(ABS(TRUNC(MONTHS_BETWEEN(SYSDATE,FECIN)/12))) AS promedio_annos FROM temple WHERE numde>= ?";
+
+            // Preparar la sentencia
+            PreparedStatement sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, Integer.parseInt(anno));
+
+            // Ejecutar consulta
+            ResultSet rs = sentencia.executeQuery();
+
+            // Recorrer resultados y mostrar datos
+            while (rs.next()) 
             {
-                System.out.println(
-                    resul.getInt(1)
-                );
+                System.out.println(rs.getInt("promedio_annos"));
             }
+
             // Cerrar recursos
-            resul.close();
+            rs.close();
             sentencia.close();
             conexion.close();
-        } 
-        catch (ClassNotFoundException cn) 
-        {
-            cn.printStackTrace();
-        } 
 
-        catch (SQLException e) 
+        } catch (Exception e) 
         {
             e.printStackTrace();
         }
