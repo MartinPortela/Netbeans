@@ -17,7 +17,7 @@ public class procedimientoMostrar
             );
 
             // Recuperar parámetros del main
-            String empleado = args[0];     // Departamento
+            String empleado = args[0];     // Empleado
 
             // Construir la orden de llamada al procedimiento almacenado
             String sql = "{ call mostrar_empleados (?) }";
@@ -26,7 +26,7 @@ public class procedimientoMostrar
             CallableStatement llamada = conexion.prepareCall(sql);
 
             // Asignar valores a los parámetros
-            llamada.setInt(1, Integer.parseInt(empleado));        // Primer argumento - deptno
+            llamada.setInt(1, Integer.parseInt(empleado));        // Primer argumento - empleado
 
             // Ejecutar el procedimiento
             llamada.executeUpdate();
