@@ -14,30 +14,11 @@ public class Principal
         int cont;
         cartas cartas[]=new cartas[40];
         jugador jugadores[]=new jugador[4];
-        cartas baraja[]=new cartas[4];
         crearBaraja(cartas);
         for (int i = 0; i < 4; i++) 
         {
-           jugadores[i]=new jugador(i+1);
-           
-           for (int j = 0; j < 4; j++) 
-            {
-                cont = (int) (Math.random() * 39);
-                while(cartas[cont]==null)
-                {
-                    cont = (int) (Math.random() * 39);
-                }
-                baraja[j]=cartas[cont];
-                cartas[cont]=null;
-            }
-           jugadores[i].setBaraja(baraja);
-           jugadores[i].setSuma(baraja[0].getPuntos()+baraja[1].getPuntos()+baraja[2].getPuntos()
-                   +baraja[3].getPuntos());
-           if(jugadores[i].getSuma()>=31)
-           {
-               jugadores[i].setJuego(true);
-           }
-            asignarPares(jugadores[i], baraja);
+            jugadores[i]=new jugador(i+1);
+            asignarBaraja(jugadores[i], cartas);
         }
         
         escribir(jugadores);
@@ -65,6 +46,32 @@ public class Principal
 
     }
     
+    private static void asignarBaraja(jugador jugadores, cartas cartas[])
+    {
+        int cont;
+        cartas baraja[]=new cartas[4];
+           
+           for (int j = 0; j < 4; j++) 
+            {
+                cont = (int) (Math.random() * 39);
+                while(cartas[cont]==null)
+                {
+                    cont = (int) (Math.random() * 39);
+                }
+                baraja[j]=cartas[cont];
+                cartas[cont]=null;
+            }
+           jugadores.setBaraja(baraja);
+           jugadores.setSuma(baraja[0].getPuntos()+baraja[1].getPuntos()+baraja[2].getPuntos()
+                   +baraja[3].getPuntos());
+           if(jugadores.getSuma()>=31)
+           {
+               jugadores.setJuego(true);
+           }
+            asignarPares(jugadores, baraja);
+        
+    }
+    
     private static void asignarPares(jugador jugadores, cartas barajas[])
     {
         int cont0=1;
@@ -72,19 +79,19 @@ public class Principal
         int cont2=1;
         for (int i = 1; i < 4; i++) 
         {
-            if(barajas[0]==barajas[i])
+            if(barajas[0].getPuntos()==barajas[i].getPuntos())
             {
                 cont0++;
             }
         }
         for (int i = 2; i < 4; i++) 
         {
-            if(barajas[1]==barajas[i])
+            if(barajas[1].getPuntos()==barajas[i].getPuntos())
             {
                 cont1++;
             }
         }
-        if(barajas[2]==barajas[3])
+        if(barajas[2].getPuntos()==barajas[3].getPuntos())
         {
             cont2++;
         }
