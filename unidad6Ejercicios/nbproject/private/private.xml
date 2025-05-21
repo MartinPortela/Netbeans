@@ -2,15 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-                                 HEAD
-        
 
-    
-        
-        
-    
-        
-    
-        <group/>
+HEAD
+        <group>
+            <file>file:/C:/Users/prog/Netbeans/unidad6Ejercicios/src/Hoja2/Tablero.java</file>
+            <file>file:/C:/Users/prog/Netbeans/unidad6Ejercicios/src/Hoja2/Alfil.java</file>
+            <file>file:/C:/Users/prog/Netbeans/unidad6Ejercicios/src/Hoja2/Torre.java</file>
+            <file>file:/C:/Users/prog/Netbeans/unidad6Ejercicios/src/Hoja2/Figura.java</file>
+        </group>
+ 639c68b0ae41386cfaebad145b70cd3d27d539eb
     </open-files>
 </project-private>
