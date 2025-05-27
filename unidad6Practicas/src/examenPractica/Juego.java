@@ -4,9 +4,9 @@ package examenPractica;
 
 public class Juego 
 {
-    int boletoJuego[]=new int[6];
-    int reintegro;
-    int complementario;
+    private int boletoJuego[]=new int[6];
+    private int reintegro;
+    private int complementario;
 
     public Juego() 
     {

@@ -11,59 +11,29 @@ public class Principal
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
-        //Array creado para mis números
-        int boleto[]=new int[6];
         int reintegro;
         int seleccion;
-        crearBoleto(boleto);
-        Juego sorteos[]=new Juego[N];
+        /*Objeto creado para llamar a los métodos de Bonoloto*/
+        Juego sorteo=new Bonoloto();
+        /*Creo aquí mi jugada*/
+        Bonoloto.crearBoleto(((Bonoloto)sorteo).getBoleto());
         reintegro=(int) ((Math.random() * 9)+1);
         for (int i = 0; i < N ; i++) 
         {
-           sorteos[i]=new Juego();
+            sorteo=new Bonoloto();
             System.out.println("Sorteo número "+i);
             System.out.println(" ");
-            imprimirSorteo(sorteos[i], boleto, reintegro);
+            imprimirSorteo(sorteo, ((Bonoloto)sorteo).getBoleto(), reintegro);
             System.out.println(" ");
+            ((Bonoloto)sorteo).getSorteos().add(sorteo);
         }
         
         System.out.println("Elige el sorteo: ");
         seleccion=sc.nextInt();
-        imprimirSorteo(sorteos[seleccion], boleto, reintegro);
+        
+        imprimirSorteo(((Bonoloto)sorteo).getSorteos().get(seleccion),((Bonoloto)sorteo).getBoleto(), reintegro);
     }
-    
-    /***************************************************************************************************/
-    private static void crearBoleto(int boleto[])
-    {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce los números de la apuesta: ");
-        for (int i = 0; i < boleto.length; i++) 
-        {
-            boolean comprobar=false;
-            boleto[i]=sc.nextInt();
-            if(i!=0){
-            while(!comprobar)
-            { int cont=0;
-            for (int j = 0; j < i; j++) 
-            {
-                if (boleto[j]==boleto[i]) 
-                {
-                  cont++;
-                }
-            }
-            if (cont!=0) 
-                {
-                   System.out.println("Número repetido, inténtalo de nuevo: ");
-                   boleto[i]=sc.nextInt();
-                }
-            else
-            {
-                comprobar=true;
-            }
-            }//fin de while
-            }//fin if
-        }
-    }
+
     /***************************************************************************************************/ 
     private static void imprimirSorteo(Juego sorteos, int boleto[], int reintegro)
     {
